@@ -22,6 +22,9 @@ io.on('connection', (socket) => {
    */
   const sendStatus = function({success, message}){
     socket.emit('status', {success, message});
+    console.log('========  sendStatus  ==========');
+    console.log(success);
+    console.log(message);
   }
 
   socket.on('transmit', () => {
@@ -72,4 +75,4 @@ io.on('connection', (socket) => {
 
 });
 
-setInterval(() => io.emit('time', new Date().toTimeString()+'__mynode'), 1000);
+setInterval(() => io.emit('time', new Date().toTimeString()+'__mynode v4'), 1000);
