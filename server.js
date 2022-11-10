@@ -33,20 +33,26 @@ io.on('connection', (socket) => {
   });
 
   socket.on('userEnteredChat', () => {
+
+    console.log('==== userEnteredChat ======');
     io.emit('refreshChatUsers');
   });
 
   socket.on('userLeftChat', () => {
+
+    console.log('==== userLeftChat ======');
     io.emit('refreshChatUsers');
   });
 
   socket.on('usernottyping', (data) => {
+    console.log('==== usernottyping ======');
     io.emit('nottyping', data);
   });
 
   socket.on('input', (data) => {
     const name = data.name;
-    const message = data.message;
+    const message = data.message
+    console.log('==== input ======');
 
     if (!name || !message) {
       sendStatus({
@@ -66,4 +72,4 @@ io.on('connection', (socket) => {
 
 });
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+setInterval(() => io.emit('time', new Date().toTimeString()+'__mynode'), 1000);
